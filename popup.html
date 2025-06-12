@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>ChecaPage</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup-container">
+    <img src="icon_checa_page_completo.png" class="logo" alt="ChecaPage Logo" />
+
+    <input type="text" id="urlInput" placeholder="Ingresa una URL aquí" />
+
+    <button id="analizarBtn">Analizar por URL</button>
+    <button id="analizarContenidoBtn">Analizar por contenido</button>
+
+    <div class="status-box status-default" id="resultado">
+      Esperando análisis...
+    </div>
+  </div>
+
+  <script src="feature_extractor.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

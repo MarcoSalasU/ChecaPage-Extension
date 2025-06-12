@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Checa Page",
+  "version": "1.0",
+  "description": "Analiza URLs y contenido HTML para detectar sitios maliciosos con Deep Learning.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "https://checapage-backend.onrender.com/*",
+    "https://backend-checapage-2.onrender.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon_checa_page.png",
+      "48": "icon_checa_page.png",
+      "128": "icon_checa_page.png"
+    }
+  },
+  "icons": {
+    "16": "icon_checa_page.png",
+    "48": "icon_checa_page.png",
+    "128": "icon_checa_page.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

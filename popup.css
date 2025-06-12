@@ -1,0 +1,92 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1C202C;
+    color: #fff;
+    padding: 10px;
+    width: 300px;
+  }
+  
+  .popup-container {
+    width: 100%;
+    position: relative;
+    text-align: center;
+  }
+  
+  .logo {
+    width: 100%;
+    max-width: 260px;
+    margin-bottom: 10px;
+  }
+  
+  /* Input y botón */
+  input {
+    width: 98%;
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 10px;
+    background-color: #2A2F3B;
+    color: white;
+  }
+  
+  input::placeholder {
+    color: #888;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #2A91D0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #1c6ea4;
+  }
+  
+  /* Resultado del análisis */
+  .status-box {
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 500;
+    text-align: left;
+  }
+  
+  /* Colores según estado */
+  .status-default {
+    background-color: #444;
+    color: #ddd;
+  }
+  
+  .status-green {
+    background-color: #019858;
+    color: white;
+  }
+  
+  .status-red {
+    background-color: #D30000;
+    color: white;
+  }
+  .status-yellow {
+    background-color: #FFA500; /* naranja */
+    color: black;
+  }
+  
+  .logo {
+    width: 250px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+button + button {
+  margin-top: 8px;
+}
