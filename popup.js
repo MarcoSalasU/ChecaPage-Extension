@@ -99,3 +99,11 @@ document.getElementById("analizarContenidoBtn").addEventListener("click", () => 
     });
   });
 });
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.tipo === "hay_iframe") {
+    const resultadoBox = document.getElementById("resultado");
+    resultadoBox.innerHTML += `<br>⚠️ Se detectaron <strong>${message.cantidad}</strong> iframe(s) incrustados.<br><strong>¡Cuidado!</strong> Esta página contiene contenido embebido, lo que podría indicar riesgo si proviene de otro dominio.`;
+    resultadoBox.className = "status-box status-yellow";
+  }
+});

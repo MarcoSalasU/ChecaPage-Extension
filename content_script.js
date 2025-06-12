@@ -16,3 +16,14 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     return true;
   }
 });
+
+// Detectar iframes al cargar la página
+(() => {
+  const iframes = document.querySelectorAll("iframe");
+  if (iframes.length > 0) {
+    chrome.runtime.sendMessage({
+      tipo: "hay_iframe",
+      cantidad: iframes.length
+    });
+  }
+})(); 
