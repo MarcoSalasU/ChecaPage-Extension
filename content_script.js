@@ -1,23 +1,22 @@
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (msg.tipo === "capturar_html_y_img") {
-    // Capturar el HTML completo de la página actual
+  if (msg.tipo === "capturar_html_y_img_y_iframes") {
     const html = document.documentElement.outerHTML;
+    const iframes = document.querySelectorAll("iframe").length;
 
-    // Solicitar a background.js que capture la pantalla
     chrome.runtime.sendMessage({ tipo: "capturar_screenshot" }, (respuesta) => {
-      if (respuesta && respuesta.img) {
-        sendResponse({ html: html, img: respuesta.img });
-      } else {
-        sendResponse({ html: html, img: null });
-      }
+      sendResponse({
+        html: html,
+        img: respuesta?.img || null,
+        iframes: iframes
+      });
     });
 
-    // Necesario para mantener el canal abierto
-    return true;
+    return true; // mantener canal abierto
   }
 });
 
 // Detectar iframes al cargar la página
+/*
 (() => {
   const iframes = document.querySelectorAll("iframe");
   if (iframes.length > 0) {
@@ -27,3 +26,16 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     });
   }
 })(); 
+*/
+
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (msg.tipo === "verificar_iframes") {
+    const iframes = document.querySelectorAll("iframe");
+    if (iframes.length > 0) {
+      chrome.runtime.sendMessage({
+        tipo: "hay_iframe",
+        cantidad: iframes.length
+      });
+    }
+  }
+});
